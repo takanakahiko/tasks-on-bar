@@ -11,26 +11,10 @@
 		40ECB5612122FBCE00F03744 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ECB5602122FBCE00F03744 /* ViewController.swift */; };
 		40ECB5632122FBD000F03744 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40ECB5622122FBD000F03744 /* Assets.xcassets */; };
 		40ECB5662122FBD000F03744 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40ECB5642122FBD000F03744 /* Main.storyboard */; };
-		40ECB5722122FBD000F03744 /* tasks_on_barTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ECB5712122FBD000F03744 /* tasks_on_barTests.swift */; };
-		40ECB57D2122FBD000F03744 /* tasks_on_barUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ECB57C2122FBD000F03744 /* tasks_on_barUITests.swift */; };
+		40F5AB7B212534D0000EB383 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5AB7A212534D0000EB383 /* Tasks.swift */; };
+		40F5AB8021255057000EB383 /* OAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F5AB7F21255057000EB383 /* OAuth2.framework */; };
+		40F5AB8C21256187000EB383 /* secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5AB8B21256187000EB383 /* secret.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		40ECB56E2122FBD000F03744 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 40ECB5532122FBCE00F03744 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 40ECB55A2122FBCE00F03744;
-			remoteInfo = "tasks-on-bar";
-		};
-		40ECB5792122FBD000F03744 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 40ECB5532122FBCE00F03744 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 40ECB55A2122FBCE00F03744;
-			remoteInfo = "tasks-on-bar";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		40ECB55B2122FBCE00F03744 /* tasks-on-bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tasks-on-bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,12 +24,9 @@
 		40ECB5652122FBD000F03744 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		40ECB5672122FBD000F03744 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40ECB5682122FBD000F03744 /* tasks_on_bar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tasks_on_bar.entitlements; sourceTree = "<group>"; };
-		40ECB56D2122FBD000F03744 /* tasks-on-barTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tasks-on-barTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		40ECB5712122FBD000F03744 /* tasks_on_barTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tasks_on_barTests.swift; sourceTree = "<group>"; };
-		40ECB5732122FBD000F03744 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		40ECB5782122FBD000F03744 /* tasks-on-barUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tasks-on-barUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		40ECB57C2122FBD000F03744 /* tasks_on_barUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tasks_on_barUITests.swift; sourceTree = "<group>"; };
-		40ECB57E2122FBD000F03744 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40F5AB7A212534D0000EB383 /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
+		40F5AB7F21255057000EB383 /* OAuth2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuth2.framework; path = Carthage/Build/Mac/OAuth2.framework; sourceTree = "<group>"; };
+		40F5AB8B21256187000EB383 /* secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secret.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,20 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		40ECB56A2122FBD000F03744 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		40ECB5752122FBD000F03744 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				40F5AB8021255057000EB383 /* OAuth2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,9 +45,8 @@
 			isa = PBXGroup;
 			children = (
 				40ECB55D2122FBCE00F03744 /* tasks-on-bar */,
-				40ECB5702122FBD000F03744 /* tasks-on-barTests */,
-				40ECB57B2122FBD000F03744 /* tasks-on-barUITests */,
 				40ECB55C2122FBCE00F03744 /* Products */,
+				40F5AB7E21255056000EB383 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,8 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				40ECB55B2122FBCE00F03744 /* tasks-on-bar.app */,
-				40ECB56D2122FBD000F03744 /* tasks-on-barTests.xctest */,
-				40ECB5782122FBD000F03744 /* tasks-on-barUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,6 +63,8 @@
 			children = (
 				40ECB55E2122FBCE00F03744 /* AppDelegate.swift */,
 				40ECB5602122FBCE00F03744 /* ViewController.swift */,
+				40F5AB7A212534D0000EB383 /* Tasks.swift */,
+				40F5AB8B21256187000EB383 /* secret.swift */,
 				40ECB5622122FBD000F03744 /* Assets.xcassets */,
 				40ECB5642122FBD000F03744 /* Main.storyboard */,
 				40ECB5672122FBD000F03744 /* Info.plist */,
@@ -106,22 +73,12 @@
 			path = "tasks-on-bar";
 			sourceTree = "<group>";
 		};
-		40ECB5702122FBD000F03744 /* tasks-on-barTests */ = {
+		40F5AB7E21255056000EB383 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				40ECB5712122FBD000F03744 /* tasks_on_barTests.swift */,
-				40ECB5732122FBD000F03744 /* Info.plist */,
+				40F5AB7F21255057000EB383 /* OAuth2.framework */,
 			);
-			path = "tasks-on-barTests";
-			sourceTree = "<group>";
-		};
-		40ECB57B2122FBD000F03744 /* tasks-on-barUITests */ = {
-			isa = PBXGroup;
-			children = (
-				40ECB57C2122FBD000F03744 /* tasks_on_barUITests.swift */,
-				40ECB57E2122FBD000F03744 /* Info.plist */,
-			);
-			path = "tasks-on-barUITests";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +91,7 @@
 				40ECB5572122FBCE00F03744 /* Sources */,
 				40ECB5582122FBCE00F03744 /* Frameworks */,
 				40ECB5592122FBCE00F03744 /* Resources */,
+				40F5AB812125507A000EB383 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -143,42 +101,6 @@
 			productName = "tasks-on-bar";
 			productReference = 40ECB55B2122FBCE00F03744 /* tasks-on-bar.app */;
 			productType = "com.apple.product-type.application";
-		};
-		40ECB56C2122FBD000F03744 /* tasks-on-barTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 40ECB5842122FBD000F03744 /* Build configuration list for PBXNativeTarget "tasks-on-barTests" */;
-			buildPhases = (
-				40ECB5692122FBD000F03744 /* Sources */,
-				40ECB56A2122FBD000F03744 /* Frameworks */,
-				40ECB56B2122FBD000F03744 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				40ECB56F2122FBD000F03744 /* PBXTargetDependency */,
-			);
-			name = "tasks-on-barTests";
-			productName = "tasks-on-barTests";
-			productReference = 40ECB56D2122FBD000F03744 /* tasks-on-barTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		40ECB5772122FBD000F03744 /* tasks-on-barUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 40ECB5872122FBD000F03744 /* Build configuration list for PBXNativeTarget "tasks-on-barUITests" */;
-			buildPhases = (
-				40ECB5742122FBD000F03744 /* Sources */,
-				40ECB5752122FBD000F03744 /* Frameworks */,
-				40ECB5762122FBD000F03744 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				40ECB57A2122FBD000F03744 /* PBXTargetDependency */,
-			);
-			name = "tasks-on-barUITests";
-			productName = "tasks-on-barUITests";
-			productReference = 40ECB5782122FBD000F03744 /* tasks-on-barUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -192,14 +114,11 @@
 				TargetAttributes = {
 					40ECB55A2122FBCE00F03744 = {
 						CreatedOnToolsVersion = 9.4.1;
-					};
-					40ECB56C2122FBD000F03744 = {
-						CreatedOnToolsVersion = 9.4.1;
-						TestTargetID = 40ECB55A2122FBCE00F03744;
-					};
-					40ECB5772122FBD000F03744 = {
-						CreatedOnToolsVersion = 9.4.1;
-						TestTargetID = 40ECB55A2122FBCE00F03744;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -217,8 +136,6 @@
 			projectRoot = "";
 			targets = (
 				40ECB55A2122FBCE00F03744 /* tasks-on-bar */,
-				40ECB56C2122FBD000F03744 /* tasks-on-barTests */,
-				40ECB5772122FBD000F03744 /* tasks-on-barUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -233,21 +150,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		40ECB56B2122FBD000F03744 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		40ECB5762122FBD000F03744 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		40F5AB812125507A000EB383 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/OAuth2.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		40ECB5572122FBCE00F03744 /* Sources */ = {
@@ -255,40 +175,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				40ECB5612122FBCE00F03744 /* ViewController.swift in Sources */,
+				40F5AB8C21256187000EB383 /* secret.swift in Sources */,
+				40F5AB7B212534D0000EB383 /* Tasks.swift in Sources */,
 				40ECB55F2122FBCE00F03744 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		40ECB5692122FBD000F03744 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				40ECB5722122FBD000F03744 /* tasks_on_barTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		40ECB5742122FBD000F03744 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				40ECB57D2122FBD000F03744 /* tasks_on_barUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		40ECB56F2122FBD000F03744 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 40ECB55A2122FBCE00F03744 /* tasks-on-bar */;
-			targetProxy = 40ECB56E2122FBD000F03744 /* PBXContainerItemProxy */;
-		};
-		40ECB57A2122FBD000F03744 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 40ECB55A2122FBCE00F03744 /* tasks-on-bar */;
-			targetProxy = 40ECB5792122FBD000F03744 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		40ECB5642122FBD000F03744 /* Main.storyboard */ = {
@@ -419,9 +312,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "tasks-on-bar/tasks_on_bar.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = "tasks-on-bar/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -437,9 +333,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "tasks-on-bar/tasks_on_bar.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = "tasks-on-bar/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -448,84 +347,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "takanakahiko.tasks-on-bar";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		40ECB5852122FBD000F03744 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "tasks-on-barTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "takanakahiko.tasks-on-barTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tasks-on-bar.app/Contents/MacOS/tasks-on-bar";
-			};
-			name = Debug;
-		};
-		40ECB5862122FBD000F03744 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "tasks-on-barTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "takanakahiko.tasks-on-barTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tasks-on-bar.app/Contents/MacOS/tasks-on-bar";
-			};
-			name = Release;
-		};
-		40ECB5882122FBD000F03744 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "tasks-on-barUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "takanakahiko.tasks-on-barUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = "tasks-on-bar";
-			};
-			name = Debug;
-		};
-		40ECB5892122FBD000F03744 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "tasks-on-barUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "takanakahiko.tasks-on-barUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = "tasks-on-bar";
 			};
 			name = Release;
 		};
@@ -546,24 +367,6 @@
 			buildConfigurations = (
 				40ECB5822122FBD000F03744 /* Debug */,
 				40ECB5832122FBD000F03744 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		40ECB5842122FBD000F03744 /* Build configuration list for PBXNativeTarget "tasks-on-barTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				40ECB5852122FBD000F03744 /* Debug */,
-				40ECB5862122FBD000F03744 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		40ECB5872122FBD000F03744 /* Build configuration list for PBXNativeTarget "tasks-on-barUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				40ECB5882122FBD000F03744 /* Debug */,
-				40ECB5892122FBD000F03744 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

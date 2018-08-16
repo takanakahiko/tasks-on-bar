@@ -7,8 +7,11 @@
 //
 
 import Cocoa
+import OAuth2
 
 class ViewController: NSViewController{
+    
+    @IBOutlet weak var tableView: NSTableView!
     
     var tableViewData: [String] = [
         "Item 1", "Item 2", "Item 3", "Item 4", "Item 5",
@@ -19,25 +22,25 @@ class ViewController: NSViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let displayWidth: CGFloat = self.view.frame.width
-        let displayHeight: CGFloat = self.view.frame.height
-        
-        
-        let tableView = NSTableView()
         tableView.delegate = self as? NSTableViewDelegate
         tableView.dataSource = self
         
-        let tableColumn = NSTableColumn(identifier: NSUserInterfaceItemIdentifier("column"))
-        tableColumn.width = displayWidth
-        tableView.addTableColumn(tableColumn)
-        
-        let scrollContentView = NSClipView()
-        scrollContentView.documentView = tableView
-        
-        let scrollView = NSScrollView(frame: NSRect(x: 50, y: 50, width: displayWidth - 100, height: displayHeight - 100))
-        scrollView.contentView = scrollContentView
-        
-        self.view.addSubview(scrollView)
+        let loader = Tasks()
+        loader.requestUserdata() { dict, error in
+            if let error = error {
+                switch error {
+                    case OAuth2Error.requestCancelled: NSLog("Cancelled. Try Again.")
+                    default: NSLog("Failed. Try Again.")
+                }
+            } else {
+                self.tableViewData.removeAll();
+                for item in (dict?["items"] as! NSArray) {
+                    self.tableViewData.append((item as! Dictionary)["title"]!)
+                }
+                print(self.tableViewData,self.tableViewData.count)
+                self.tableView?.reloadData()
+            }
+        }
     }
 }
 
@@ -47,6 +50,6 @@ extension ViewController: NSTableViewDataSource{
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        return NSCell(textCell: tableViewData[row])
+        return tableViewData[row]
     }
 }
