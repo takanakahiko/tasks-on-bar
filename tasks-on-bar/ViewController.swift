@@ -52,9 +52,7 @@ class ViewController: NSViewController{
             self.tasks = []
             return
         }
-        print("hoge")
         let tasklistId : String = (self.taskLists[self.selectedRow] as! Dictionary)["id"]!
-        print(tasklistId)
         tasksLoader.requestTasks(tasklistId: tasklistId) { dict, error in
             if let error = error {
                 self.handleRequestError(error: error)
@@ -78,9 +76,7 @@ class ViewController: NSViewController{
     }
     
     func getArrayByTag(_ tag: Int) -> NSArray{
-        if(tag == 1) {
-            return taskLists
-        }
+        if(tag == 1) { return taskLists }
         return tasks
     }
 }
@@ -98,14 +94,8 @@ extension ViewController: NSTableViewDataSource{
 extension ViewController: NSTableViewDelegate{
     func tableViewSelectionDidChange(_ notification: Notification) {
         
-        print("hoge")
-        
         if let myTable = notification.object as? NSTableView {
-            print("hoge")
-            // we create an [Int] array from the index set
-            if(myTable.tag != 1){
-                return;
-            }
+            if(myTable.tag != 1){ return; }
             self.selectedRow = myTable.selectedRow
             reloadTasks();
         }
