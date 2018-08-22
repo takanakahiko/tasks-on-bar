@@ -108,6 +108,9 @@
 		40ECB5532122FBCE00F03744 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					tasklists,
+				);
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Takayuki Nakayama";

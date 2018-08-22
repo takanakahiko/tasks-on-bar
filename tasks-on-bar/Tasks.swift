@@ -49,7 +49,11 @@ class Tasks: OAuth2DataLoader {
         }
     }
     
-    func requestUserdata(callback: @escaping ((_ dict: OAuth2JSON?, _ error: Error?) -> Void)) {
+    func requestTaskLists(callback: @escaping ((_ dict: OAuth2JSON?, _ error: Error?) -> Void)) {
         request(path: "tasks/v1/users/@me/lists", callback: callback)
+    }
+    
+    func requestTasks(tasklistId:String, callback: @escaping ((_ dict: OAuth2JSON?, _ error: Error?) -> Void)) {
+        request(path: "tasks/v1/lists/\(tasklistId)/tasks", callback: callback)
     }
 }
