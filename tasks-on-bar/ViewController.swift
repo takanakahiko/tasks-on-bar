@@ -17,7 +17,6 @@ class ViewController: NSViewController{
     var taskLists: NSArray = []
     var tasks: NSArray = []
     var tasksLoader : Tasks = Tasks()
-    var selectedRow : Int = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +31,8 @@ class ViewController: NSViewController{
         tableView2.dataSource = self
         
         reloadTaskLists();
-        reloadTasks();
+        
+        print(tableView.selectedRow)
     }
     
     
@@ -48,11 +48,11 @@ class ViewController: NSViewController{
     }
     
     func reloadTasks(){
-        if(self.selectedRow == -1){
+        guard (tableView.selectedRow == -1) else {
             self.tasks = []
             return
         }
-        let tasklistId : String = (self.taskLists[self.selectedRow] as! Dictionary)["id"]!
+        let tasklistId : String = (self.taskLists[tableView.selectedRow] as! Dictionary)["id"]!
         tasksLoader.requestTasks(tasklistId: tasklistId) { dict, error in
             if let error = error {
                 self.handleRequestError(error: error)
@@ -96,7 +96,6 @@ extension ViewController: NSTableViewDelegate{
         
         if let myTable = notification.object as? NSTableView {
             if(myTable.tag != 1){ return; }
-            self.selectedRow = myTable.selectedRow
             reloadTasks();
         }
         
