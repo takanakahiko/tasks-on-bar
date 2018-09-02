@@ -10,6 +10,24 @@ import Foundation
 import OAuth2
 import Cocoa
 
+
+struct TaskList: Codable{
+    var id: String
+    var kind: String
+    var selfLink: String
+    var title: String
+    var updated: String
+}
+
+struct Task: Codable{
+    var etag: String
+    var id: String
+    var kind: String
+    var selfLink: String
+    var status: String
+    var updated: String
+}
+
 class Tasks: OAuth2DataLoader {
     
     let baseURL = URL(string: "https://www.googleapis.com")!
@@ -38,6 +56,7 @@ class Tasks: OAuth2DataLoader {
         perform(request: req) { response in
             do {
                 let dict = try response.responseJSON()
+                print(dict)
                 if let error = (dict["error"] as? OAuth2JSON)?["message"] as? String {
                     DispatchQueue.main.async { callback(nil, OAuth2Error.generic(error)) }
                 } else {
