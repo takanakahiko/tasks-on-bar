@@ -32,7 +32,6 @@ class ViewController: NSViewController{
         
         reloadTaskLists();
         
-        print(tableView.selectedRow)
     }
     
     
@@ -48,7 +47,7 @@ class ViewController: NSViewController{
     }
     
     func reloadTasks(){
-        guard (tableView.selectedRow == -1) else {
+        guard (tableView.selectedRow >= 0) else {
             self.tasks = []
             return
         }
