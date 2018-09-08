@@ -14,9 +14,9 @@ class ViewController: NSViewController{
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var tableView2: NSTableView!
     
-    var taskLists: NSArray = []
-    var tasks: NSArray = []
-    var tasksLoader : Tasks = Tasks()
+    var taskLists:[TaskList] = []
+    var tasks:[Task] = []
+    var tasksLoader : TasksApi = TasksApi()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class ViewController: NSViewController{
                 self.handleRequestError(error: error)
                 return
             }
-            self.taskLists = (dict?["items"] as! NSArray)
+            self.taskLists = dict!.items
             self.tableView?.reloadData()
         }
     }
@@ -51,13 +51,13 @@ class ViewController: NSViewController{
             self.tasks = []
             return
         }
-        let tasklistId : String = (self.taskLists[tableView.selectedRow] as! Dictionary)["id"]!
+        let tasklistId : String = self.taskLists[tableView.selectedRow].id
         tasksLoader.requestTasks(tasklistId: tasklistId) { dict, error in
             if let error = error {
                 self.handleRequestError(error: error)
                 return
             }
-            if let tasks = dict?["items"] as? NSArray {
+            if let tasks = dict?.items {
                 self.tasks = tasks
             }else{
                 self.tasks = []
@@ -74,7 +74,7 @@ class ViewController: NSViewController{
         print(error)
     }
     
-    func getArrayByTag(_ tag: Int) -> NSArray{
+    func getArrayByTag(_ tag: Int) -> [ Any ] {
         if(tag == 1) { return taskLists }
         return tasks
     }
@@ -86,7 +86,8 @@ extension ViewController: NSTableViewDataSource{
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        return (getArrayByTag(tableView.tag)[row] as! Dictionary)["title"]
+        if(tableView.tag == 1) { return taskLists[row].title }
+        return tasks[row].title
     }
 }
 
