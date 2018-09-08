@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40505C5A2144274900AA86CD /* OAuth2CodeGrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40505C592144274900AA86CD /* OAuth2CodeGrant.swift */; };
 		40ECB55F2122FBCE00F03744 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ECB55E2122FBCE00F03744 /* AppDelegate.swift */; };
 		40ECB5612122FBCE00F03744 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ECB5602122FBCE00F03744 /* ViewController.swift */; };
 		40ECB5632122FBD000F03744 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40ECB5622122FBD000F03744 /* Assets.xcassets */; };
 		40ECB5662122FBD000F03744 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40ECB5642122FBD000F03744 /* Main.storyboard */; };
-		40F5AB7B212534D0000EB383 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5AB7A212534D0000EB383 /* Tasks.swift */; };
+		40F5AB7B212534D0000EB383 /* TasksApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5AB7A212534D0000EB383 /* TasksApi.swift */; };
 		40F5AB8021255057000EB383 /* OAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F5AB7F21255057000EB383 /* OAuth2.framework */; };
 		40F5AB8C21256187000EB383 /* secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5AB8B21256187000EB383 /* secret.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		40505C592144274900AA86CD /* OAuth2CodeGrant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2CodeGrant.swift; sourceTree = "<group>"; };
 		40ECB55B2122FBCE00F03744 /* tasks-on-bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tasks-on-bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40ECB55E2122FBCE00F03744 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40ECB5602122FBCE00F03744 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,7 +26,7 @@
 		40ECB5652122FBD000F03744 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		40ECB5672122FBD000F03744 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40ECB5682122FBD000F03744 /* tasks_on_bar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tasks_on_bar.entitlements; sourceTree = "<group>"; };
-		40F5AB7A212534D0000EB383 /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
+		40F5AB7A212534D0000EB383 /* TasksApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksApi.swift; sourceTree = "<group>"; };
 		40F5AB7F21255057000EB383 /* OAuth2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuth2.framework; path = Carthage/Build/Mac/OAuth2.framework; sourceTree = "<group>"; };
 		40F5AB8B21256187000EB383 /* secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secret.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,7 +65,8 @@
 			children = (
 				40ECB55E2122FBCE00F03744 /* AppDelegate.swift */,
 				40ECB5602122FBCE00F03744 /* ViewController.swift */,
-				40F5AB7A212534D0000EB383 /* Tasks.swift */,
+				40F5AB7A212534D0000EB383 /* TasksApi.swift */,
+				40505C592144274900AA86CD /* OAuth2CodeGrant.swift */,
 				40F5AB8B21256187000EB383 /* secret.swift */,
 				40ECB5622122FBD000F03744 /* Assets.xcassets */,
 				40ECB5642122FBD000F03744 /* Main.storyboard */,
@@ -179,7 +182,8 @@
 			files = (
 				40ECB5612122FBCE00F03744 /* ViewController.swift in Sources */,
 				40F5AB8C21256187000EB383 /* secret.swift in Sources */,
-				40F5AB7B212534D0000EB383 /* Tasks.swift in Sources */,
+				40F5AB7B212534D0000EB383 /* TasksApi.swift in Sources */,
+				40505C5A2144274900AA86CD /* OAuth2CodeGrant.swift in Sources */,
 				40ECB55F2122FBCE00F03744 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
