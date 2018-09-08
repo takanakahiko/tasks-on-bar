@@ -18,7 +18,7 @@
 //  limitations under the License.
 //
 import Foundation
-import Oauth2
+import OAuth2
 //#if !NO_MODULE_IMPORT
 //import Base
 //#endif
