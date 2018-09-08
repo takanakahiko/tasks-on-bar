@@ -132,7 +132,8 @@ open class OAuth2CodeGrant: OAuth2 {
             throw OAuth2Error.invalidRedirectURL("Expecting «\(expectRedirect)» but received «\(redirect)»")
         }
         if let compQuery = comp?.query, compQuery.count > 0 {
-            let query = OAuth2CodeGrant.params(fromQuery: comp!.percentEncodedQuery!)
+            let fromQuery = (comp!.percentEncodedQuery! as String).replacingOccurrences(of: "&amp;", with: "&")
+            let query = OAuth2CodeGrant.params(fromQuery: fromQuery)
             try assureNoErrorInResponse(query as OAuth2JSON)
             if let cd = query["code"] {
                 
