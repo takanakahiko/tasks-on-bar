@@ -20,7 +20,7 @@ struct TaskList: Codable{
 
 struct TaskListGroup: Codable{
     var kind: String
-    var etug: String
+    var etag: String
     var items: [TaskList]
 }
 
@@ -36,7 +36,7 @@ struct Task: Codable{
 
 struct TaskGroup: Codable{
     var kind: String
-    var etug: String
+    var etag: String
     var items: [Task]
 }
 
@@ -60,40 +60,17 @@ class TasksApi: OAuth2DataLoader {
         super.init(oauth2: oauth, host: "https://www.googleapis.com")
         alsoIntercept403 = true
     }
-
-        /** Perform a request against the API and return decoded JSON or an Error. */
-    func request(path: String, callback: @escaping ((OAuth2JSON?, Error?) -> Void)) {
-        let url = baseURL.appendingPathComponent(path)
-        let req = oauth2.request(forURL: url)
-
-        perform(request: req) { response in
-            do {
-                let dict = try response.responseJSON()
-                print(dict)
-                if let error = (dict["error"] as? OAuth2JSON)?["message"] as? String {
-                    DispatchQueue.main.async { callback(nil, OAuth2Error.generic(error)) }
-                } else {
-                    DispatchQueue.main.async { callback(dict, nil) }
-                }
-            } catch let error {
-                DispatchQueue.main.async { callback(nil, error) }
-            }
-        }
-    }
-
-
+    
+    
     func request(path: String, callback: @escaping ((String?, Error?) -> Void)) {
         let url = baseURL.appendingPathComponent(path)
         let req = oauth2.request(forURL: url)
 
         perform(request: req) { response in
             do {
-                let dict = try response.responseJSON()
-                print(dict)
-                print(try response.responseJSON())
-                let ret = try response.responseData().base64EncodedString()
-                print(ret)
-                DispatchQueue.main.async { callback(ret, nil) }
+                let ret = try response.responseData()
+                let tmp =  String(data: ret, encoding: .utf8)!
+                DispatchQueue.main.async { callback( tmp, nil) }
             } catch let error {
                 DispatchQueue.main.async { callback(nil, error) }
             }
