@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		40505C5A2144274900AA86CD /* OAuth2CodeGrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40505C592144274900AA86CD /* OAuth2CodeGrant.swift */; };
+		40505C5C2146433A00AA86CD /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40505C5B2146433900AA86CD /* Result.framework */; };
 		40ECB55F2122FBCE00F03744 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ECB55E2122FBCE00F03744 /* AppDelegate.swift */; };
 		40ECB5612122FBCE00F03744 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ECB5602122FBCE00F03744 /* ViewController.swift */; };
 		40ECB5632122FBD000F03744 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40ECB5622122FBD000F03744 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		40505C592144274900AA86CD /* OAuth2CodeGrant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2CodeGrant.swift; sourceTree = "<group>"; };
+		40505C5B2146433900AA86CD /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
 		40ECB55B2122FBCE00F03744 /* tasks-on-bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tasks-on-bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40ECB55E2122FBCE00F03744 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40ECB5602122FBCE00F03744 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40505C5C2146433A00AA86CD /* Result.framework in Frameworks */,
 				40F5AB8021255057000EB383 /* OAuth2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,6 +82,7 @@
 		40F5AB7E21255056000EB383 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				40505C5B2146433900AA86CD /* Result.framework */,
 				40F5AB7F21255057000EB383 /* OAuth2.framework */,
 			);
 			name = Frameworks;
@@ -94,7 +98,7 @@
 				40ECB5572122FBCE00F03744 /* Sources */,
 				40ECB5582122FBCE00F03744 /* Frameworks */,
 				40ECB5592122FBCE00F03744 /* Resources */,
-				40F5AB812125507A000EB383 /* ShellScript */,
+				40F5AB812125507A000EB383 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -159,14 +163,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		40F5AB812125507A000EB383 /* ShellScript */ = {
+		40F5AB812125507A000EB383 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/Mac/OAuth2.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/Result.framework",
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
