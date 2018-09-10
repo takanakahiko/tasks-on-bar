@@ -36,13 +36,14 @@ class ViewController: NSViewController{
     
     
     func reloadTaskLists(){
-        tasksLoader.requestTaskLists() { dict, error in
-            if let error = error {
+        tasksLoader.requestTaskLists() { result in
+            switch(result){
+            case .success(let taskListGroups):
+                self.taskLists = taskListGroups.items
+                self.tableView.reloadData()
+            case .failure(let error):
                 self.handleRequestError(error: error)
-                return
             }
-            self.taskLists = dict!.items
-            self.tableView?.reloadData()
         }
     }
     
@@ -52,17 +53,14 @@ class ViewController: NSViewController{
             return
         }
         let tasklistId : String = self.taskLists[tableView.selectedRow].id
-        tasksLoader.requestTasks(tasklistId: tasklistId) { dict, error in
-            if let error = error {
+        tasksLoader.requestTasks(tasklistId: tasklistId) { result in
+            switch(result){
+            case .success(let taskGroups):
+                self.tasks = taskGroups.items
+                self.tableView2.reloadData()
+            case .failure(let error):
                 self.handleRequestError(error: error)
-                return
             }
-            if let tasks = dict?.items {
-                self.tasks = tasks
-            }else{
-                self.tasks = []
-            }
-            self.tableView2.reloadData()
         }
     }
     

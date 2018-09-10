@@ -8,6 +8,7 @@
 
 import Foundation
 import OAuth2
+import Result
 import Cocoa
 
 struct TaskList: Codable{
@@ -62,7 +63,7 @@ class TasksApi: OAuth2DataLoader {
     }
     
     
-    func request(path: String, callback: @escaping ((String?, Error?) -> Void)) {
+    func request(path: String, callback: @escaping ((Result<String, OAuth2Error>) -> Void)) {
         let url = baseURL.appendingPathComponent(path)
         let req = oauth2.request(forURL: url)
 
@@ -70,54 +71,39 @@ class TasksApi: OAuth2DataLoader {
             do {
                 let ret = try response.responseData()
                 let tmp =  String(data: ret, encoding: .utf8)!
-                DispatchQueue.main.async { callback( tmp, nil) }
+                DispatchQueue.main.async {  callback( .success(tmp) ) }
             } catch let error {
-                DispatchQueue.main.async { callback(nil, error) }
+                DispatchQueue.main.async { callback( .failure(error as! OAuth2Error) ) }
             }
         }
     }
 
 
-    func requestJson<T:Codable>(path: String, type: T.Type, callback: @escaping ((T?, Error?) -> Void)) {
+    func requestJson<T:Codable>(path: String, type: T.Type, callback: @escaping ((Result<T, OAuth2Error>) -> Void)) {
 
-        request(path:path) { responseText , error in
-            guard let _responseText = responseText else{
-                callback(nil, error)
-                return;
+        request(path:path) { result in
+            switch result {
+                case .success(let response):
+                    do{
+                        let object = try JSONDecoder().decode(type.self, from: response.data(using: .utf8)!)
+                        callback( .success(object) )
+                    }catch let error{
+                        callback( .failure(error as! OAuth2Error) )
+                    }
+                case .failure(let error):
+                    callback( .failure(error) )
             }
-            do{
-                let ret = try JSONDecoder().decode(type.self, from: _responseText.data(using: .utf8)!)
-                callback(ret, nil)
-            }catch let error{
-                callback(nil, error)
-            }
-            return;
 
         }
 
     }
 
 
-    func requestTaskLists(callback: @escaping ((_ dict: TaskListGroup?, _ error: Error?) -> Void)) {
-        //request(path: "tasks/v1/users/@me/lists", callback: callback)
-        requestJson(path:"tasks/v1/users/@me/lists", type:TaskListGroup.self)  { json , error in
-            guard let _json = json else{
-                callback(nil, error)
-                return;
-            }
-            callback(_json, nil)
-            return;
-        }
+    func requestTaskLists(callback: @escaping ((Result<TaskListGroup, OAuth2Error>) -> Void)) {
+        requestJson(path:"tasks/v1/users/@me/lists", type:TaskListGroup.self, callback:callback)
     }
 
-    func requestTasks(tasklistId:String, callback: @escaping ((_ dict: TaskGroup?, _ error: Error?) -> Void)) {
-        requestJson(path:"tasks/v1/lists/\(tasklistId)/tasks", type:TaskGroup.self) { json , error in
-            guard let _json = json else{
-                callback(nil, error)
-                return;
-            }
-            callback(_json, nil)
-            return;
-        }
+    func requestTasks(tasklistId:String, callback: @escaping ((Result<TaskGroup, OAuth2Error>) -> Void)) {
+        requestJson(path:"tasks/v1/lists/\(tasklistId)/tasks", type:TaskGroup.self, callback:callback)
     }
 }
