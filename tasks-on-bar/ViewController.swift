@@ -39,7 +39,7 @@ class ViewController: NSViewController{
         tasksLoader.requestTaskLists() { result in
             switch(result){
             case .success(let taskListGroups):
-                self.taskLists = taskListGroups.items
+                self.taskLists = taskListGroups.items ?? []
                 self.tableView.reloadData()
             case .failure(let error):
                 self.handleRequestError(error: error)
@@ -56,7 +56,7 @@ class ViewController: NSViewController{
         tasksLoader.requestTasks(tasklistId: tasklistId) { result in
             switch(result){
             case .success(let taskGroups):
-                self.tasks = taskGroups.items
+                self.tasks = taskGroups.items ?? []
                 self.tableView2.reloadData()
             case .failure(let error):
                 self.handleRequestError(error: error)

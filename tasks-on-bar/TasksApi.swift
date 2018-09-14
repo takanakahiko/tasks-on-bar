@@ -22,7 +22,7 @@ struct TaskList: Codable{
 struct TaskListGroup: Codable{
     var kind: String
     var etag: String
-    var items: [TaskList]
+    var items: [TaskList]?
 }
 
 struct Task: Codable{
@@ -38,7 +38,7 @@ struct Task: Codable{
 struct TaskGroup: Codable{
     var kind: String
     var etag: String
-    var items: [Task]
+    var items: [Task]?
 }
 
 class TasksApi: OAuth2DataLoader {
