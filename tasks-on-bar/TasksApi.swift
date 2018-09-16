@@ -46,7 +46,7 @@ class TasksApi: OAuth2DataLoader {
     let baseURL = URL(string: "https://www.googleapis.com")!
 
     public init() {
-        let oauth = OAuth2CodeGrant(settings: [
+        let oauth2 = OAuth2CodeGrant(settings: [
             "client_id": client_id,
             "client_secret": client_secret,
             "authorize_uri": "https://accounts.google.com/o/oauth2/auth",
@@ -55,18 +55,21 @@ class TasksApi: OAuth2DataLoader {
             "redirect_uris": ["urn:ietf:wg:oauth:2.0:oob:auto"],
             "keychain": false,
         ])
-        oauth.logger = OAuth2DebugLogger(.trace)
-        oauth.authConfig.authorizeEmbedded = true
-        //oauth.authConfig.authorizeContext = NSWindow
-        super.init(oauth2: oauth, host: "https://www.googleapis.com")
+        oauth2.logger = OAuth2DebugLogger(.trace)
+        oauth2.authConfig.authorizeEmbedded = true
+        super.init(oauth2: oauth2, host: "https://www.googleapis.com")
         alsoIntercept403 = true
     }
     
     
-    func request(path: String, callback: @escaping ((Result<String, OAuth2Error>) -> Void)) {
+    func request(path: String, postData: [String:Any]? = nil, callback: @escaping ((Result<String, OAuth2Error>) -> Void)) {
         let url = baseURL.appendingPathComponent(path)
-        let req = oauth2.request(forURL: url)
-
+        var req = oauth2.request(forURL: url)
+        if let data = postData{
+            req.httpMethod = "POST"
+            req.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            req.httpBody = try? JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
+        }
         perform(request: req) { response in
             do {
                 let ret = try response.responseData()
@@ -79,31 +82,33 @@ class TasksApi: OAuth2DataLoader {
     }
 
 
-    func requestJson<T:Codable>(path: String, type: T.Type, callback: @escaping ((Result<T, OAuth2Error>) -> Void)) {
-
-        request(path:path) { result in
+    func requestJson<T:Codable>(path: String, postData: [String:Any]? = nil, type: T.Type, callback: @escaping ((Result<T, OAuth2Error>) -> Void)) {
+        request(path:path, postData: postData) { result in
             switch result {
                 case .success(let response):
                     do{
                         let object = try JSONDecoder().decode(type.self, from: response.data(using: .utf8)!)
                         callback( .success(object) )
                     }catch let error{
+                        print(error)
                         callback( .failure(error as! OAuth2Error) )
                     }
                 case .failure(let error):
                     callback( .failure(error) )
             }
-
         }
-
     }
 
-
-    func requestTaskLists(callback: @escaping ((Result<TaskListGroup, OAuth2Error>) -> Void)) {
+    func getTaskLists(callback: @escaping ((Result<TaskListGroup, OAuth2Error>) -> Void)) {
         requestJson(path:"tasks/v1/users/@me/lists", type:TaskListGroup.self, callback:callback)
     }
 
-    func requestTasks(tasklistId:String, callback: @escaping ((Result<TaskGroup, OAuth2Error>) -> Void)) {
+    func getTasks(tasklistId:String, callback: @escaping ((Result<TaskGroup, OAuth2Error>) -> Void)) {
         requestJson(path:"tasks/v1/lists/\(tasklistId)/tasks", type:TaskGroup.self, callback:callback)
+    }
+    
+    func addTaskList(title:String, callback: @escaping ((Result<TaskList, OAuth2Error>) -> Void)) {
+        let params:[String:Any] = ["title" : title]
+        requestJson(path:"tasks/v1/users/@me/lists", postData:params , type:TaskList.self, callback:callback)
     }
 }

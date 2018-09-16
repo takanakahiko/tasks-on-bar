@@ -18,6 +18,10 @@ class ViewController: NSViewController{
     var tasks:[Task] = []
     var tasksLoader : TasksApi = TasksApi()
     
+    @IBAction func plusTaskList(_ sender: NSButton) {
+        addTasklist(title:"test")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +40,7 @@ class ViewController: NSViewController{
     
     
     func reloadTaskLists(){
-        tasksLoader.requestTaskLists() { result in
+        tasksLoader.getTaskLists() { result in
             switch(result){
             case .success(let taskListGroups):
                 self.taskLists = taskListGroups.items ?? []
@@ -53,11 +57,22 @@ class ViewController: NSViewController{
             return
         }
         let tasklistId : String = self.taskLists[tableView.selectedRow].id
-        tasksLoader.requestTasks(tasklistId: tasklistId) { result in
+        tasksLoader.getTasks(tasklistId: tasklistId) { result in
             switch(result){
             case .success(let taskGroups):
                 self.tasks = taskGroups.items ?? []
                 self.tableView2.reloadData()
+            case .failure(let error):
+                self.handleRequestError(error: error)
+            }
+        }
+    }
+    
+    func addTasklist(title: String){
+        tasksLoader.addTaskList(title: title) { result in
+            switch(result){
+            case .success(_):
+                self.reloadTaskLists()
             case .failure(let error):
                 self.handleRequestError(error: error)
             }
